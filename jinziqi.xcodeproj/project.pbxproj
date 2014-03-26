@@ -19,6 +19,7 @@
 		8089D01E18E2E1EF0083360E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8089D00618E2E1EF0083360E /* UIKit.framework */; };
 		8089D02618E2E1EF0083360E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8089D02418E2E1EF0083360E /* InfoPlist.strings */; };
 		8089D02818E2E1EF0083360E /* jinziqiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8089D02718E2E1EF0083360E /* jinziqiTests.m */; };
+		8089D03618E2FBAA0083360E /* SnjinziqiCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8089D03518E2FBAA0083360E /* SnjinziqiCore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,8 @@
 		8089D02318E2E1EF0083360E /* jinziqiTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "jinziqiTests-Info.plist"; sourceTree = "<group>"; };
 		8089D02518E2E1EF0083360E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8089D02718E2E1EF0083360E /* jinziqiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jinziqiTests.m; sourceTree = "<group>"; };
+		8089D03418E2FBAA0083360E /* SnjinziqiCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnjinziqiCore.h; sourceTree = "<group>"; };
+		8089D03518E2FBAA0083360E /* SnjinziqiCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnjinziqiCore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,8 @@
 		8089D00818E2E1EF0083360E /* jinziqi */ = {
 			isa = PBXGroup;
 			children = (
+				8089D03418E2FBAA0083360E /* SnjinziqiCore.h */,
+				8089D03518E2FBAA0083360E /* SnjinziqiCore.m */,
 				8089D01118E2E1EF0083360E /* SnAppDelegate.h */,
 				8089D01218E2E1EF0083360E /* SnAppDelegate.m */,
 				8089D01418E2E1EF0083360E /* Images.xcassets */,
@@ -240,6 +245,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8089D03618E2FBAA0083360E /* SnjinziqiCore.m in Sources */,
 				8089D00F18E2E1EF0083360E /* main.m in Sources */,
 				8089D01318E2E1EF0083360E /* SnAppDelegate.m in Sources */,
 			);
