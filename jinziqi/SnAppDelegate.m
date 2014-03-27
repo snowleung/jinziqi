@@ -7,6 +7,7 @@
 //
 
 #import "SnAppDelegate.h"
+#import "SnChessboradViewController.h"
 
 @implementation SnAppDelegate
 
@@ -16,6 +17,8 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
+    SnChessboradViewController *chessboard = [[SnChessboradViewController alloc] initChessBoard];
+    [self.window setRootViewController:chessboard];
     return YES;
 }
 

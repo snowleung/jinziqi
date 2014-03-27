@@ -27,6 +27,23 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
+-(void)testPlayerStep
+{
+    SnPlayer *player = [[SnPlayer alloc]initWithTag:0 andChessImage:@""];
+    XCTAssertTrue([player addStep:1], @"");
+    XCTAssertTrue([player addStep:2], @"");
+    XCTAssertFalse([player addStep:1], @"");
+    XCTAssertFalse([player addStep:2], @"");
+}
+-(void)testWhoPlaying
+{
+    SnjinziqiCore *jinziqi = [[SnjinziqiCore alloc]init];
+    enum who w =[jinziqi whoPlaying:player_a];
+    XCTAssertTrue(w == player_a, @"");
+    enum who w2 = [jinziqi whoPlaying:player_b];
+    XCTAssertTrue(w2 == player_b, @"");
+    XCTAssertFalse(w2 == player_a, @"");
+}
 
 -(void)testPlayer
 {

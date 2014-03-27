@@ -27,7 +27,16 @@
     }
     return self;
 }
-
+-(BOOL)addStep:(NSInteger)step
+{
+    for (id s in _chessStep) {
+        if ([s integerValue] == step) {
+            return NO;
+        }
+    }
+    [_chessStep addObject:[NSNumber numberWithInteger:step]];
+    return YES;
+}
 @end
 
 @implementation SnPoint
@@ -53,8 +62,8 @@
 
 -(id)init{
     if (self = [super init]) {
-        _player_A = [[SnPlayer alloc]initWithTag:0 andChessImage:@""];
-        _player_B = [[SnPlayer alloc]initWithTag:1 andChessImage:@""];
+        _player_A = [[SnPlayer alloc]initWithTag:0 andChessImage:@"img_true.png"];
+        _player_B = [[SnPlayer alloc]initWithTag:1 andChessImage:@"img_false.png"];
         //init chessboard
         _chessboard = @{
                         @1: [[SnPoint alloc]initWithX:0 Y:0],
@@ -68,6 +77,7 @@
                         @9: [[SnPoint alloc]initWithX:2 Y:2],
                         };
         _chesses = [[NSMutableArray alloc] init];
+        _who = player_a;
     }
     return self;
 }
@@ -93,6 +103,26 @@
     }else{
         return NO;
     }
+}
+-(enum who)whoPlaying:(enum who)player
+{
+    _who = player;
+    return _who;
+}
+-(enum who)whoPlaying
+{
+    switch (_who) {
+        case player_a:
+            _who = player_b;
+            break;
+        case player_b:
+            _who = player_a;
+            break;
+        default:
+            _who = player_a;
+            break;
+    }
+    return _who;
 }
 -(NSArray *)playerChessesCombinationsWithSet:(NSArray *)arr andCombin:(NSInteger) c
 {

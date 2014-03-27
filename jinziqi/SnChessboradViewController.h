@@ -7,13 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SnjinziqiCore.h"
 
 @interface SnChessboradViewController : UIViewController
 
+@property (nonatomic, strong) SnjinziqiCore *jinziqiCore;
+@property (nonatomic, strong) NSMutableArray *chessBoard;
+
+-(id)initChessBoard;
+
 @end
 
-@interface UIImageView (Chesses)
+@interface UIImageView (compare)
 
-@property (nonatomic, assign) NSInteger coord;
+-(NSComparisonResult)compare:(UIImageView *)img;
 
 @end
