@@ -7,6 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+@interface SnPlayer : NSObject
+@property (nonatomic, assign) NSInteger tag;
+@property (nonatomic, strong) NSMutableArray *chessStep;
+@property (nonatomic, strong) NSString *nickName;
+@property (nonatomic, strong) NSString *chessImage;
+-(id)initWithTag:(NSInteger)t andChessImage:(NSString *)p;
+@end
 @interface SnPoint : NSObject
 
 @property (nonatomic,assign) NSInteger x;
@@ -17,8 +24,8 @@
 
 @interface SnjinziqiCore : NSObject
 
-@property (nonatomic,strong) NSMutableArray *player_A;
-@property (nonatomic,strong) NSMutableArray *player_B;
+@property (nonatomic,strong) SnPlayer *player_A;
+@property (nonatomic,strong) SnPlayer *player_B;
 @property (nonatomic,strong) NSDictionary *chessboard;
 @property (nonatomic,strong) NSMutableArray *chesses;
 -(SnPoint *) chessboardWithPosition:(NSInteger )pos;

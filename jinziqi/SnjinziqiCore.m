@@ -8,6 +8,28 @@
 
 #import "SnjinziqiCore.h"
 
+@implementation SnPlayer
+
+-(id)init{
+    if (self = [super init]) {
+        //
+        _tag = rand();
+        _chessStep = [[NSMutableArray alloc]init];
+        _chessImage = @"";
+    }
+    return self;
+}
+-(id)initWithTag:(NSInteger)t andChessImage:(NSString *)p{
+    if (self = [super init]) {
+        _tag = t;
+        _chessImage = p;
+        _chessStep = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
+
+@end
+
 @implementation SnPoint
 -(id)init{
     if (self = [super init]) {
@@ -31,8 +53,8 @@
 
 -(id)init{
     if (self = [super init]) {
-        self.player_A = [[NSMutableArray alloc]init];
-        self.player_B = [[NSMutableArray alloc]init];
+        _player_A = [[SnPlayer alloc]initWithTag:0 andChessImage:@""];
+        _player_B = [[SnPlayer alloc]initWithTag:1 andChessImage:@""];
         //init chessboard
         _chessboard = @{
                         @1: [[SnPoint alloc]initWithX:0 Y:0],

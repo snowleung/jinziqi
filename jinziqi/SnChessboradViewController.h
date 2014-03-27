@@ -11,3 +11,9 @@
 @interface SnChessboradViewController : UIViewController
 
 @end
+
+@interface UIImageView (Chesses)
+
+@property (nonatomic, assign) NSInteger coord;
+
+@end

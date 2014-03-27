@@ -20,6 +20,8 @@
 		8089D02618E2E1EF0083360E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8089D02418E2E1EF0083360E /* InfoPlist.strings */; };
 		8089D02818E2E1EF0083360E /* jinziqiTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8089D02718E2E1EF0083360E /* jinziqiTests.m */; };
 		8089D03618E2FBAA0083360E /* SnjinziqiCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8089D03518E2FBAA0083360E /* SnjinziqiCore.m */; };
+		8089D04318E44CBD0083360E /* SnChessboradViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8089D04118E44CBD0083360E /* SnChessboradViewController.m */; };
+		8089D04418E44CBD0083360E /* SnChessboradViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8089D04218E44CBD0083360E /* SnChessboradViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,9 @@
 		8089D02718E2E1EF0083360E /* jinziqiTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = jinziqiTests.m; sourceTree = "<group>"; };
 		8089D03418E2FBAA0083360E /* SnjinziqiCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SnjinziqiCore.h; sourceTree = "<group>"; };
 		8089D03518E2FBAA0083360E /* SnjinziqiCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SnjinziqiCore.m; sourceTree = "<group>"; };
+		8089D04018E44CBD0083360E /* SnChessboradViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SnChessboradViewController.h; path = jinziqi/SnChessboradViewController.h; sourceTree = "<group>"; };
+		8089D04118E44CBD0083360E /* SnChessboradViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SnChessboradViewController.m; path = jinziqi/SnChessboradViewController.m; sourceTree = "<group>"; };
+		8089D04218E44CBD0083360E /* SnChessboradViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SnChessboradViewController.xib; path = jinziqi/SnChessboradViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +85,9 @@
 		8089CFF618E2E1EF0083360E = {
 			isa = PBXGroup;
 			children = (
+				8089D04018E44CBD0083360E /* SnChessboradViewController.h */,
+				8089D04118E44CBD0083360E /* SnChessboradViewController.m */,
+				8089D04218E44CBD0083360E /* SnChessboradViewController.xib */,
 				8089D00818E2E1EF0083360E /* jinziqi */,
 				8089D02118E2E1EF0083360E /* jinziqiTests */,
 				8089D00118E2E1EF0083360E /* Frameworks */,
@@ -227,6 +235,7 @@
 			files = (
 				8089D00D18E2E1EF0083360E /* InfoPlist.strings in Resources */,
 				8089D01518E2E1EF0083360E /* Images.xcassets in Resources */,
+				8089D04418E44CBD0083360E /* SnChessboradViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,6 +255,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8089D03618E2FBAA0083360E /* SnjinziqiCore.m in Sources */,
+				8089D04318E44CBD0083360E /* SnChessboradViewController.m in Sources */,
 				8089D00F18E2E1EF0083360E /* main.m in Sources */,
 				8089D01318E2E1EF0083360E /* SnAppDelegate.m in Sources */,
 			);

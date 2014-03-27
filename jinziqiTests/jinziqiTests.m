@@ -30,9 +30,9 @@
 
 -(void)testPlayer
 {
-    SnjinziqiCore *jinziqi = [[SnjinziqiCore alloc]init];
-    XCTAssertEqualObjects([[NSMutableArray alloc]init], jinziqi.player_A, @"not NSMutableArray");
-    XCTAssertEqualObjects([[NSMutableArray alloc]init], jinziqi.player_B, @"not NSMutableArray");
+    SnPlayer *p = [[SnPlayer alloc]initWithTag:0 andChessImage:@""];
+    XCTAssertTrue(p.tag == 0, @"");
+    XCTAssertTrue([p.chessImage isEqualToString:@""], @"");
 }
 -(void)testChessboard
 {
