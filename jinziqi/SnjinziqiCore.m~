@@ -1,0 +1,21 @@
+//
+//  SnjinziqiCore.m
+//  jinziqi
+//
+//  Created by snow on 26/3/14.
+//  Copyright (c) 2014 snow. All rights reserved.
+//
+
+#import "SnjinziqiCore.h"
+
+@implementation SnjinziqiCore
+
+-(id)init{
+    if (self) {
+        self = [super init];
+        self.player_A = [[NSMutableArray alloc]init];
+        self.player_B = [[NSMutableArray alloc]init];
+    }
+    return self;
+}
+@end

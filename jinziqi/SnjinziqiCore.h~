@@ -1,0 +1,22 @@
+//
+//  SnjinziqiCore.h
+//  jinziqi
+//
+//  Created by snow on 26/3/14.
+//  Copyright (c) 2014 snow. All rights reserved.
+//
+
+#import <Foundation/Foundation.h>
+
+@interface SnPoint : NSObject
+
+@property (nonatomic,assign) NSInteger *x;
+@property (nonatomic,assign) NSInteger *y;
+@end
+@interface SnjinziqiCore : NSObject
+
+@property (nonatomic,strong) NSMutableArray *player_A;
+@property (nonatomic,strong) NSMutableArray *player_B;
+-(SnPoint *) chessboardWithPosition:(NSInteger *)pos;
+@end
+
