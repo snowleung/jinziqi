@@ -95,4 +95,47 @@
     XCTAssertTrue([jinziqi islineWithPointA:a PointB:b andPointC:c], @"need True");
 }
 
+-(void)testChessUseful
+{
+    SnjinziqiCore *jinziqi = [[SnjinziqiCore alloc]init];
+    XCTAssertTrue([jinziqi addChess:1], @"");
+    XCTAssertTrue([jinziqi addChess:2], @"");
+    XCTAssertFalse([jinziqi addChess:1], @"has the same chess");
+}
+-(void)testChessTotal
+{
+    SnjinziqiCore *jinziqi = [[SnjinziqiCore alloc]init];
+    [jinziqi addChess:8];
+    [jinziqi addChess:9];
+    NSMutableArray *totals = [jinziqi chessesTotals];
+    NSMutableArray *test_totals = [@[@1, @2, @3, @4, @5, @6, @7] mutableCopy];
+    XCTAssertTrue([test_totals isEqualToArray:totals], @"");
+    [test_totals addObject:@8];
+    XCTAssertFalse([test_totals isEqualToArray:totals], @"");
+}
+-(void)testChessCombinations
+{
+    SnjinziqiCore *jinziqi = [[SnjinziqiCore alloc]init];
+    NSArray *r = [jinziqi playerChessesCombinationsWithSet:@[@"a", @"b", @"c", @"d"] andCombin:3];
+    NSArray *result = @[@[@"a", @"b", @"c"], @[@"a", @"b", @"d"], @[@"a", @"c", @"d"], @[@"b", @"c", @"d"]];
+    XCTAssertTrue([result isEqualToArray:r], @"");
+    result = @[@[@"a", @"b", @"c"], @[@"a", @"b", @"d"], @[@"a", @"c", @"d"], @[@"b", @"c", @"c"]];
+    XCTAssertFalse([result isEqualToArray:r], @"");
+    
+    r = [jinziqi playerChessesCombinationsWithSet:@[@1, @2, @3, @4] andCombin:3];
+    result = @[@[@1, @2, @3], @[@1, @2, @4], @[@1, @3, @4], @[@2, @3, @4]];
+    XCTAssertTrue([result isEqualToArray:r], @"");
+    result = @[@[@1, @2, @3], @[@1, @2, @4], @[@1, @3, @4], @[@2, @3, @2]];
+    XCTAssertFalse([result isEqualToArray:r], @"");
+}
+-(void)testIsWin
+{
+    SnjinziqiCore *jinziqi = [[SnjinziqiCore alloc]init];
+    NSArray *a = @[@1, @2, @3, @7, @8];
+    XCTAssertTrue([jinziqi isWin:a], @"");
+    NSArray *b = @[@7, @8, @9, @5];
+    XCTAssertTrue([jinziqi isWin:b], @"");
+    NSArray *c = @[@1, @2, @7, @8];
+    XCTAssertFalse([jinziqi isWin:c], @"");
+}
 @end

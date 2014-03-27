@@ -20,7 +20,12 @@
 @property (nonatomic,strong) NSMutableArray *player_A;
 @property (nonatomic,strong) NSMutableArray *player_B;
 @property (nonatomic,strong) NSDictionary *chessboard;
+@property (nonatomic,strong) NSMutableArray *chesses;
 -(SnPoint *) chessboardWithPosition:(NSInteger )pos;
 -(BOOL) islineWithPointA:(SnPoint *)a PointB:(SnPoint *)b andPointC:(SnPoint *)c;
+-(BOOL) addChess:(NSInteger) chess;
+-(NSMutableArray *)chessesTotals;
+-(NSArray *)playerChessesCombinationsWithSet:(NSArray *)arr andCombin:(NSInteger) c;
+-(BOOL)isWin:(NSArray *)step;
 @end
 

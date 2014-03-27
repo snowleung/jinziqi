@@ -45,10 +45,58 @@
                         @8: [[SnPoint alloc]initWithX:2 Y:1],
                         @9: [[SnPoint alloc]initWithX:2 Y:2],
                         };
+        _chesses = [[NSMutableArray alloc] init];
     }
     return self;
 }
-
+-(BOOL)isWin:(NSArray *)step
+{
+    NSArray *combinations = [self playerChessesCombinationsWithSet:step andCombin:3];
+    for (NSArray *array in combinations) {
+        SnPoint *a = _chessboard[array[0]];
+        SnPoint *b = _chessboard[array[1]];
+        SnPoint *c = _chessboard[array[2]];
+        if ([self islineWithPointA:a PointB:b andPointC:c]) {
+            return YES;
+        }
+    }
+    return NO;
+}
+-(BOOL) addChess:(NSInteger)chess
+{
+    if (chess<1 || chess>9) return NO;
+    if (![_chesses containsObject:[NSNumber numberWithInteger:chess]]) {
+        [_chesses addObject:[NSNumber numberWithInteger:chess]];
+        return YES;
+    }else{
+        return NO;
+    }
+}
+-(NSArray *)playerChessesCombinationsWithSet:(NSArray *)arr andCombin:(NSInteger) c
+{
+    if (c != 3) {
+        //just support 3
+        return @[];
+    }
+    NSMutableArray *combinations = [[NSMutableArray alloc]init];
+    NSInteger len = [arr count];
+    for (int i = 0; i < len; i++) {
+        for (int j = i + 1; j < len; j++) {
+            for (int k = j + 1; k < len; k++) {
+                NSArray *r = @[arr[i], arr[j], arr[k]];
+                [combinations addObject:r];
+            }
+        }
+    }
+    return combinations;
+}
+-(NSMutableArray *)chessesTotals{
+    NSMutableSet *a = [NSMutableSet setWithArray:@[@1, @2, @3, @4, @5, @6, @7, @8, @9]];
+    NSSet *b = [NSSet setWithArray:_chesses];
+    [a minusSet:b];
+    NSArray *new_a = [a sortedArrayUsingDescriptors:@[[NSSortDescriptor sortDescriptorWithKey:nil ascending:YES]]];
+    return [new_a mutableCopy];
+}
 -(SnPoint *) chessboardWithPosition:(NSInteger)pos
 {
     return [self.chessboard objectForKey:[NSNumber numberWithInteger:pos]];
@@ -83,7 +131,6 @@
     }
     return result;
 }
-
 -(BOOL) islineWithPointA:(SnPoint *)a PointB:(SnPoint *)b andPointC:(SnPoint *)c
 {
     if ([self isline_x_WithPointA:a PointB:b andPointC:c]) return YES;
