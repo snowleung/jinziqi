@@ -8,7 +8,7 @@
 
 #import <XCTest/XCTest.h>
 #import "SnjinziqiCore.h"
-
+#import "SnChessboradViewController.h"
 
 @interface jinziqiTests : XCTestCase
 
@@ -26,6 +26,14 @@
 {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
+}
+-(void)testSenseClean
+{
+    SnChessboradViewController *chessboardSense = [[SnChessboradViewController alloc]initChessBoard];
+    SnjinziqiCore *beforeCore =  chessboardSense.jinziqiCore;
+    XCTAssertEqualObjects(beforeCore, chessboardSense.jinziqiCore, @"");
+    [chessboardSense cleanCore];
+    XCTAssertNotEqualObjects(beforeCore, chessboardSense.jinziqiCore, @"");
 }
 -(void)testPlayerStep
 {

@@ -77,6 +77,11 @@
     }
     NSLog(@"和了！");
 }
+- (void)cleanCore
+{
+    _jinziqiCore = nil;
+    _jinziqiCore = [[SnjinziqiCore alloc]init];
+}
 - (void)viewDidLoad
 {
     [super viewDidLoad];

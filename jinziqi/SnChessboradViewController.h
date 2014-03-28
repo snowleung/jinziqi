@@ -14,8 +14,8 @@
 @property (nonatomic, strong) SnjinziqiCore *jinziqiCore;
 @property (nonatomic, strong) NSMutableArray *chessBoard;
 
--(id)initChessBoard;
-
+-(id) initChessBoard;
+-(void) cleanCore;
 @end
 
 @interface UIImageView (compare)
