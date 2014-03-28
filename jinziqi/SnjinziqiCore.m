@@ -191,5 +191,4 @@
     if ([self isline_xy_2_WithPointA:a PointB:b andPointC:c]) return YES;
     return NO;
 }
-
 @end

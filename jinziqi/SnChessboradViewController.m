@@ -28,6 +28,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+
     }
     return self;
 }
@@ -36,6 +37,9 @@
     if (self) {
         _jinziqiCore = [[SnjinziqiCore alloc]init];
         _chessBoard = [[NSMutableArray alloc] init];
+        _infoBoard = [[UIAlertView alloc]initWithFrame:CGRectMake(0, 0, 100, 300)];
+        _infoBoard.delegate = self;
+        [_infoBoard addButtonWithTitle:@"i know"];
         for (id tag in [_jinziqiCore.chessboard allKeys]) {
             UIImageView *img = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 50, 50)];
             [img setBackgroundColor:[UIColor redColor]];
@@ -59,7 +63,7 @@
                 [_jinziqiCore whoPlaying:player_b];
                 o.image = [UIImage imageNamed:_jinziqiCore.player_A.chessImage];
                 if ([_jinziqiCore isWin:_jinziqiCore.player_A.chessStep]) {
-                    NSLog(@"player a win");
+                    [self showInfoBoard:@"player a win"];
                 }
             }
             break;
@@ -68,39 +72,54 @@
                 [_jinziqiCore whoPlaying:player_a];
                 o.image = [UIImage imageNamed:_jinziqiCore.player_B.chessImage];
                 if ([_jinziqiCore isWin:_jinziqiCore.player_B.chessStep]) {
-                    NSLog(@"player b win");
+                    [self showInfoBoard:@"player b win"];
                 }
             }
             break;
         default:
             break;
     }
-    NSLog(@"和了！");
+    if ((_jinziqiCore.player_A.chessStep.count + _jinziqiCore.player_B.chessStep.count) == 9) {
+        [self showInfoBoard:@"nobody win , play again"];
+    }
+}
+- (void)showInfoBoard:(NSString *)msg
+{
+    _infoBoard.message = msg;
+    [_infoBoard show];
+}
+- (void)cleanChessboard
+{
+    for (UIImageView *i in _chessBoard) {
+        i.image = nil;
+    }
 }
 - (void)cleanCore
 {
     _jinziqiCore = nil;
     _jinziqiCore = [[SnjinziqiCore alloc]init];
+    [self cleanChessboard];
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     //draw chessboard
-    int y = 100;
+    int y = 250;
     int flag = 1;
-    
+    int border = 1;
+    int coord_offset = 80;
     NSArray *sortedChessBoard = [_chessBoard sortedArrayUsingSelector:@selector(compare:)];
     for (NSInteger i = 0; i < [sortedChessBoard count]; i++) {
         UIImageView *v = sortedChessBoard[i];
         if (flag > 3) {
             flag = 1;
-            y -=50;
+            y = y - (50 + border);
         }
 //        NSLog(@"flag = %d",flag);
 //        NSLog(@"x = %d", (flag -1)*50);
 //        NSLog(@"y = %d", y);
-        [v setFrame:CGRectMake((flag -1)*50, y, 50, 50)];
+        [v setFrame:CGRectMake((flag - 1)*(50 + border) + coord_offset, y , 50, 50)];
         [self.view addSubview:v];
         flag++;
     }
@@ -110,6 +129,13 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+
+#pragma mark ---uialterview delegate
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    NSLog(@"press the alert button");
+    [self cleanCore];
 }
 
 @end
