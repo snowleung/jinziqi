@@ -54,9 +54,9 @@
     return self;
 }
 -(void) UserClicked:(UIGestureRecognizer *)gestureRecognizer{
-    UIImageView *o = gestureRecognizer.view;
+    UIImageView *o =(UIImageView *) gestureRecognizer.view;
     NSInteger t = o.tag;
-    NSLog(@"tapping tag is %d", t);
+//    NSLog(@"tapping tag is %d", t);
     switch (_jinziqiCore.who) {
         case player_a:
             if ([_jinziqiCore.player_A addStep:t]) {
