@@ -57,6 +57,10 @@
     UIImageView *o =(UIImageView *) gestureRecognizer.view;
     NSInteger t = o.tag;
 //    NSLog(@"tapping tag is %d", t);
+    if (![_jinziqiCore addChess:t]) {
+        //press the same chess should be return at twice;
+        return;
+    }
     switch (_jinziqiCore.who) {
         case player_a:
             if ([_jinziqiCore.player_A addStep:t]) {
