@@ -59,6 +59,38 @@
     return self;
 }
 
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    // Do any additional setup after loading the view from its nib.
+    [_btn_restart setFrame:CGRectMake(133, 320, 50, 25)];
+    [self.view addSubview:_btn_restart];
+    //draw chessboard
+    int y = 250;
+    int flag = 1;
+    int border = 1;
+    int coord_offset = 80;
+    NSArray *sortedChessBoard = [_chessBoard sortedArrayUsingSelector:@selector(compare:)];
+    for (NSInteger i = 0; i < [sortedChessBoard count]; i++) {
+        UIImageView *v = sortedChessBoard[i];
+        if (flag > 3) {
+            flag = 1;
+            y = y - (50 + border);
+        }
+//        NSLog(@"flag = %d",flag);
+//        NSLog(@"x = %d", (flag -1)*50);
+//        NSLog(@"y = %d", y);
+        [v setFrame:CGRectMake((flag - 1)*(50 + border) + coord_offset, y , 50, 50)];
+        [self.view addSubview:v];
+        flag++;
+    }
+}
+
+- (void)didReceiveMemoryWarning
+{
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 #pragma mark - restart touch event
 - (void)restart_touch:(UIButton *) btn{
     [self cleanCore];
@@ -68,7 +100,7 @@
 - (void)UserClicked:(UIGestureRecognizer *)gestureRecognizer{
     UIImageView *o =(UIImageView *) gestureRecognizer.view;
     NSInteger t = o.tag;
-//    NSLog(@"tapping tag is %d", t);
+    //    NSLog(@"tapping tag is %d", t);
     if (![_jinziqiCore addChess:t]) {
         //press the same chess should be return at twice;
         return;
@@ -113,38 +145,7 @@
         i.image = nil;
     }
 }
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
-    [_btn_restart setFrame:CGRectMake(133, 320, 50, 25)];
-    [self.view addSubview:_btn_restart];
-    //draw chessboard
-    int y = 250;
-    int flag = 1;
-    int border = 1;
-    int coord_offset = 80;
-    NSArray *sortedChessBoard = [_chessBoard sortedArrayUsingSelector:@selector(compare:)];
-    for (NSInteger i = 0; i < [sortedChessBoard count]; i++) {
-        UIImageView *v = sortedChessBoard[i];
-        if (flag > 3) {
-            flag = 1;
-            y = y - (50 + border);
-        }
-//        NSLog(@"flag = %d",flag);
-//        NSLog(@"x = %d", (flag -1)*50);
-//        NSLog(@"y = %d", y);
-        [v setFrame:CGRectMake((flag - 1)*(50 + border) + coord_offset, y , 50, 50)];
-        [self.view addSubview:v];
-        flag++;
-    }
-}
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 #pragma mark ---uialterview delegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
