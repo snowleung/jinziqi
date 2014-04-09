@@ -37,6 +37,11 @@
     if (self) {
         _jinziqiCore = [[SnjinziqiCore alloc]init];
         _chessBoard = [[NSMutableArray alloc] init];
+        _btn_restart = [UIButton buttonWithType:UIButtonTypeSystem];
+        [_btn_restart setTitle:@"Restart" forState:UIControlStateNormal];
+        [_btn_restart setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
+        _btn_restart.backgroundColor = [UIColor whiteColor];
+        [_btn_restart addTarget:self action:@selector(restart_touch:) forControlEvents:UIControlEventTouchUpInside];
         _infoBoard = [[UIAlertView alloc]initWithFrame:CGRectMake(0, 0, 100, 300)];
         _infoBoard.delegate = self;
         [_infoBoard addButtonWithTitle:@"i know"];
@@ -53,7 +58,14 @@
     }
     return self;
 }
--(void) UserClicked:(UIGestureRecognizer *)gestureRecognizer{
+
+#pragma mark - restart touch event
+- (void)restart_touch:(UIButton *) btn{
+    [self cleanCore];
+}
+
+#pragma mark - image chess touch event
+- (void)UserClicked:(UIGestureRecognizer *)gestureRecognizer{
     UIImageView *o =(UIImageView *) gestureRecognizer.view;
     NSInteger t = o.tag;
 //    NSLog(@"tapping tag is %d", t);
@@ -92,22 +104,21 @@
     _infoBoard.message = msg;
     [_infoBoard show];
 }
-- (void)cleanChessboard
-{
-    for (UIImageView *i in _chessBoard) {
-        i.image = nil;
-    }
-}
+
 - (void)cleanCore
 {
     _jinziqiCore = nil;
     _jinziqiCore = [[SnjinziqiCore alloc]init];
-    [self cleanChessboard];
+    for (UIImageView *i in _chessBoard) {
+        i.image = nil;
+    }
 }
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [_btn_restart setFrame:CGRectMake(133, 320, 50, 25)];
+    [self.view addSubview:_btn_restart];
     //draw chessboard
     int y = 250;
     int flag = 1;
@@ -135,11 +146,9 @@
     // Dispose of any resources that can be recreated.
 }
 
-
 #pragma mark ---uialterview delegate
 -(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
     NSLog(@"press the alert button");
     [self cleanCore];
 }
-
 @end

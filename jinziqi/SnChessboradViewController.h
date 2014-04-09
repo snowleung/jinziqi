@@ -14,6 +14,8 @@
 @property (nonatomic, strong) SnjinziqiCore *jinziqiCore;
 @property (nonatomic, strong) NSMutableArray *chessBoard;
 @property (nonatomic, strong) UIAlertView *infoBoard;
+@property (nonatomic, strong) UIButton *btn_restart;
+
 -(void)showInfoBoard:(NSString *)msg;
 -(id) initChessBoard;
 -(void) cleanCore;
